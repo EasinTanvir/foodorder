@@ -52,13 +52,13 @@ app.use((error, req, res, next) => {
   res.json({ message: error.message || "unknown error occured" });
 });
 
-const server = app.listen(5000, () => {
+const server = app.listen(process.env.PORT, () => {
   console.log("server running");
 });
 
 const io = require("socket.io")(server, {
   cors: {
-    origin: "http://localhost:5000",
+    origin: process.env.SERVER_URL,
   },
 });
 
